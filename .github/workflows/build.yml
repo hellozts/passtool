@@ -15,7 +15,7 @@ on:
 jobs:
   build-mac:
     name: 构建 macOS 通用应用
-    runs-on: macos-14
+    runs-on: macos-15
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
@@ -23,7 +23,7 @@ jobs:
       - name: 选择 Xcode 版本
         uses: maxim-lobanov/setup-xcode@v1
         with:
-          xcode-version: '15.4'
+          xcode-version: '16-latest'
 
       - name: 安装 XcodeGen
         run: brew install xcodegen
