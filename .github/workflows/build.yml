@@ -63,6 +63,13 @@ jobs:
           cp -R "$APP" export/Passtool.app
           echo "✅ 已提取: $APP"
 
+      - name: Ad-hoc 签名（无开发者证书，用本地签名消除 Gatekeeper 警告）
+        run: |
+          set -e
+          codesign --force --deep --sign - export/Passtool.app
+          echo "=== 签名验证 ==="
+          codesign -dv export/Passtool.app 2>&1 | head -10
+
       - name: 验证产物架构
         run: |
           echo "=== 二进制架构 ==="
@@ -72,10 +79,10 @@ jobs:
           echo "=== 最小系统版本 ==="
           /usr/libexec/PlistBuddy -c "Print LSMinimumSystemVersion" export/Passtool.app/Contents/Info.plist 2>/dev/null || true
 
-      - name: 打包 zip
+      - name: 打包 zip（不保留扩展属性，避免下载后触发 Gatekeeper）
         run: |
           cd export
-          ditto -c -k --keepParent Passtool.app Passtool-mac-universal.zip
+          ditto -c -k --keepParent --norsrc Passtool.app Passtool-mac-universal.zip
           ls -lh Passtool-mac-universal.zip
 
       - name: 上传构建产物
