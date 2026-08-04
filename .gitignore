@@ -1,0 +1,21 @@
+# Swift / Xcode 构建产物
+.build/
+build/
+dist/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+
+# Xcode 工程生成物（由 XcodeGen 在 CI 生成）
+Passtool.xcodeproj/project.xcworkspace/xcuserdata/
+Passtool.xcodeproj/xcuserdata/
+
+# macOS
+.DS_Store
+*.swp
+*~
+
+# 临时文件
+*.log

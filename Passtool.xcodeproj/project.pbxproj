@@ -1,0 +1,562 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0406442587D48A86922783F2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA31B0EF6C1AD180070DEC5 /* MainView.swift */; };
+		05A0FA121AFBC108A3900225 /* VaultStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB9DEE40150A1EF8814006 /* VaultStore.swift */; };
+		10C5C5686976074831D0F5A9 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E561DC56355C09B35B3696 /* EmptyStateView.swift */; };
+		1898F30C97DDBD7D0C9154E4 /* VaultModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65726BA0FA9CCB59D4B541B6 /* VaultModels.swift */; };
+		2C88E68874E5E94225E8EE37 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5CDC893814B99430090CE5 /* AppSettings.swift */; };
+		2CB0951FC779914D1E63E18E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A39EF3ADC53D7EFDFC6368 /* SettingsView.swift */; };
+		35F6566EAF13834412E043FD /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E561DC56355C09B35B3696 /* EmptyStateView.swift */; };
+		45127C00F2B24961B32A8B53 /* IdleMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F61DD71330A77361880EA /* IdleMonitor.swift */; };
+		52ADBCB726A5190C285DA32F /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206380AAFFE7EB3F2F7923BF /* RootView.swift */; };
+		57130874BB147F45F14CCD1C /* PasstoolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FE5339FF0273A9CABC158C /* PasstoolApp.swift */; };
+		62DACD024ACFA56DECF9C336 /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F370F4A496D1387F54B4A0C9 /* UnlockView.swift */; };
+		666B801EE94034B35E65F819 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206380AAFFE7EB3F2F7923BF /* RootView.swift */; };
+		709E0B797C5D7683EC400366 /* IdleMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34F61DD71330A77361880EA /* IdleMonitor.swift */; };
+		76E84BFC9A0FF4FE81D39B12 /* EntryEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB69922199131B3CE13FC13 /* EntryEditorView.swift */; };
+		80D478FC148266A608487323 /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836447A106F5DC48210F9F12 /* Clipboard.swift */; };
+		8DD4164AC9879CBA1FBAD5B0 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBDED3A5B2D776681BA7318 /* SetupView.swift */; };
+		9332BFBC868A5B810BF03399 /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698153039A70C98D36CE5275 /* PasswordGenerator.swift */; };
+		962F09BD0960482F8F0E46FF /* EntryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260F575E7AE3607000EADDF9 /* EntryDetailView.swift */; };
+		9EFFBB35BAAF4A235C1A4381 /* VaultCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884C65F1B2D1BDDBFA3D9E25 /* VaultCrypto.swift */; };
+		A5FE20042ED938491E77D0D4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A39EF3ADC53D7EFDFC6368 /* SettingsView.swift */; };
+		A64FE13CE9066E0A013A4684 /* EntryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260F575E7AE3607000EADDF9 /* EntryDetailView.swift */; };
+		A854E6D1E55B7C06B940A909 /* PasstoolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDA2F95FA409847798DE95F /* PasstoolApp.swift */; };
+		AE9E9D72D530B3FDDA982874 /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836447A106F5DC48210F9F12 /* Clipboard.swift */; };
+		B900C436F6D244F2F2ED9362 /* SetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBDED3A5B2D776681BA7318 /* SetupView.swift */; };
+		BBA793BBF150AD23CB784321 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA31B0EF6C1AD180070DEC5 /* MainView.swift */; };
+		BC95F49F5D1683BDE1196DD7 /* VaultStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CB9DEE40150A1EF8814006 /* VaultStore.swift */; };
+		C142123E19120E2F52B56780 /* DirectoryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFFD9D5FB6F3DD4B3593814 /* DirectoryPicker.swift */; };
+		CDCD4111A7D24C6F1E936723 /* EntryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E3475DCD9D822E3A223635 /* EntryListView.swift */; };
+		DA964116EB680EADD99F253B /* VaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B38A3DBCE0C45DADE74D7A /* VaultManager.swift */; };
+		DE311EE77E55196B903F36CC /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F370F4A496D1387F54B4A0C9 /* UnlockView.swift */; };
+		E1B0910D44FB70852882AFC5 /* VaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B38A3DBCE0C45DADE74D7A /* VaultManager.swift */; };
+		E4E8B2A1E6526020CDA3C3EC /* DirectoryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFFD9D5FB6F3DD4B3593814 /* DirectoryPicker.swift */; };
+		E71F51AE2B294C66E444BCB2 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5CDC893814B99430090CE5 /* AppSettings.swift */; };
+		E9CD4801B2F7A2866FF8D75A /* EntryEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB69922199131B3CE13FC13 /* EntryEditorView.swift */; };
+		F2228E76FF22BDFF4F237059 /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698153039A70C98D36CE5275 /* PasswordGenerator.swift */; };
+		F4658177B410A61E7A31FF5E /* VaultModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65726BA0FA9CCB59D4B541B6 /* VaultModels.swift */; };
+		F5AC0B1BF7BE899883C14DAB /* EntryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E3475DCD9D822E3A223635 /* EntryListView.swift */; };
+		FBD0078FB4101BC9C957F82B /* VaultCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884C65F1B2D1BDDBFA3D9E25 /* VaultCrypto.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0FDA2F95FA409847798DE95F /* PasstoolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasstoolApp.swift; sourceTree = "<group>"; };
+		206380AAFFE7EB3F2F7923BF /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		260F575E7AE3607000EADDF9 /* EntryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailView.swift; sourceTree = "<group>"; };
+		3627A14EA951796722F8AC27 /* Passtool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Passtool.entitlements; sourceTree = "<group>"; };
+		41FE5339FF0273A9CABC158C /* PasstoolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasstoolApp.swift; sourceTree = "<group>"; };
+		42F73131BAECC2F01C825352 /* PasstoolIOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PasstoolIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D5CDC893814B99430090CE5 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		54ABB7B83ED4F5482E33338D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		57CB9DEE40150A1EF8814006 /* VaultStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultStore.swift; sourceTree = "<group>"; };
+		65726BA0FA9CCB59D4B541B6 /* VaultModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultModels.swift; sourceTree = "<group>"; };
+		698153039A70C98D36CE5275 /* PasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
+		6CB69922199131B3CE13FC13 /* EntryEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryEditorView.swift; sourceTree = "<group>"; };
+		74E3475DCD9D822E3A223635 /* EntryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListView.swift; sourceTree = "<group>"; };
+		76A39EF3ADC53D7EFDFC6368 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		7BFFD9D5FB6F3DD4B3593814 /* DirectoryPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryPicker.swift; sourceTree = "<group>"; };
+		836447A106F5DC48210F9F12 /* Clipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clipboard.swift; sourceTree = "<group>"; };
+		884C65F1B2D1BDDBFA3D9E25 /* VaultCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultCrypto.swift; sourceTree = "<group>"; };
+		9FBDED3A5B2D776681BA7318 /* SetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupView.swift; sourceTree = "<group>"; };
+		AD8BF938244A0CC26E0FAEDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BD8CC05811CB5AB06061400E /* PasstoolMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PasstoolMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C134C6E855FC6C748C5A1F39 /* Passtool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Passtool.entitlements; sourceTree = "<group>"; };
+		DEA31B0EF6C1AD180070DEC5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E34F61DD71330A77361880EA /* IdleMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdleMonitor.swift; sourceTree = "<group>"; };
+		E9B38A3DBCE0C45DADE74D7A /* VaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaultManager.swift; sourceTree = "<group>"; };
+		F0E561DC56355C09B35B3696 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		F370F4A496D1387F54B4A0C9 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1FE480201CC165F18798714D /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				4D5CDC893814B99430090CE5 /* AppSettings.swift */,
+				57CB9DEE40150A1EF8814006 /* VaultStore.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		2AAD86BE7A8EDF367C5433BC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				65726BA0FA9CCB59D4B541B6 /* VaultModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		35178A7F071010710FCBCAA9 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				54ABB7B83ED4F5482E33338D /* Info.plist */,
+				C134C6E855FC6C748C5A1F39 /* Passtool.entitlements */,
+				0FDA2F95FA409847798DE95F /* PasstoolApp.swift */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		521E0D4DD738F0C6255CA62E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F0E561DC56355C09B35B3696 /* EmptyStateView.swift */,
+				260F575E7AE3607000EADDF9 /* EntryDetailView.swift */,
+				6CB69922199131B3CE13FC13 /* EntryEditorView.swift */,
+				74E3475DCD9D822E3A223635 /* EntryListView.swift */,
+				DEA31B0EF6C1AD180070DEC5 /* MainView.swift */,
+				206380AAFFE7EB3F2F7923BF /* RootView.swift */,
+				76A39EF3ADC53D7EFDFC6368 /* SettingsView.swift */,
+				9FBDED3A5B2D776681BA7318 /* SetupView.swift */,
+				F370F4A496D1387F54B4A0C9 /* UnlockView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		575BD67E551DBEE4E1BF4D94 /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				884C65F1B2D1BDDBFA3D9E25 /* VaultCrypto.swift */,
+			);
+			path = Crypto;
+			sourceTree = "<group>";
+		};
+		5A518134527D4ED90A175782 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				42F73131BAECC2F01C825352 /* PasstoolIOS.app */,
+				BD8CC05811CB5AB06061400E /* PasstoolMac.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		85EFBDBD9D12D455A8EE3740 = {
+			isa = PBXGroup;
+			children = (
+				8E843AD455B46DEB4EFD641C /* iOS */,
+				35178A7F071010710FCBCAA9 /* macOS */,
+				E598AA05F7C2BD480FE3D1FA /* Shared */,
+				5A518134527D4ED90A175782 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8E843AD455B46DEB4EFD641C /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				AD8BF938244A0CC26E0FAEDB /* Info.plist */,
+				3627A14EA951796722F8AC27 /* Passtool.entitlements */,
+				41FE5339FF0273A9CABC158C /* PasstoolApp.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		D98F128826B46DAA26FCEDE3 /* Vault */ = {
+			isa = PBXGroup;
+			children = (
+				E34F61DD71330A77361880EA /* IdleMonitor.swift */,
+				E9B38A3DBCE0C45DADE74D7A /* VaultManager.swift */,
+			);
+			path = Vault;
+			sourceTree = "<group>";
+		};
+		DD28BD47AF10496AC41C60E1 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				836447A106F5DC48210F9F12 /* Clipboard.swift */,
+				7BFFD9D5FB6F3DD4B3593814 /* DirectoryPicker.swift */,
+				698153039A70C98D36CE5275 /* PasswordGenerator.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		E598AA05F7C2BD480FE3D1FA /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				575BD67E551DBEE4E1BF4D94 /* Crypto */,
+				2AAD86BE7A8EDF367C5433BC /* Models */,
+				1FE480201CC165F18798714D /* Storage */,
+				DD28BD47AF10496AC41C60E1 /* Util */,
+				D98F128826B46DAA26FCEDE3 /* Vault */,
+				521E0D4DD738F0C6255CA62E /* Views */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8237357DC7AB3085C5831DE4 /* PasstoolMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60E4E860F744DAE18BAB67DB /* Build configuration list for PBXNativeTarget "PasstoolMac" */;
+			buildPhases = (
+				3D2F780F5E325A7BA7531D82 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PasstoolMac;
+			packageProductDependencies = (
+			);
+			productName = PasstoolMac;
+			productReference = BD8CC05811CB5AB06061400E /* PasstoolMac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CADA8E4E3B4F20685364DC62 /* PasstoolIOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDA24200FF6C3AC07105BA8F /* Build configuration list for PBXNativeTarget "PasstoolIOS" */;
+			buildPhases = (
+				CC2D95041310552B0F3C05F4 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PasstoolIOS;
+			packageProductDependencies = (
+			);
+			productName = PasstoolIOS;
+			productReference = 42F73131BAECC2F01C825352 /* PasstoolIOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5E85E766385172B44BADC2EA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					8237357DC7AB3085C5831DE4 = {
+						DevelopmentTeam = "";
+					};
+					CADA8E4E3B4F20685364DC62 = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = 644E975F4184DCA321FAA5E3 /* Build configuration list for PBXProject "Passtool" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 85EFBDBD9D12D455A8EE3740;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5A518134527D4ED90A175782 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8237357DC7AB3085C5831DE4 /* PasstoolMac */,
+				CADA8E4E3B4F20685364DC62 /* PasstoolIOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3D2F780F5E325A7BA7531D82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E71F51AE2B294C66E444BCB2 /* AppSettings.swift in Sources */,
+				AE9E9D72D530B3FDDA982874 /* Clipboard.swift in Sources */,
+				E4E8B2A1E6526020CDA3C3EC /* DirectoryPicker.swift in Sources */,
+				10C5C5686976074831D0F5A9 /* EmptyStateView.swift in Sources */,
+				962F09BD0960482F8F0E46FF /* EntryDetailView.swift in Sources */,
+				E9CD4801B2F7A2866FF8D75A /* EntryEditorView.swift in Sources */,
+				CDCD4111A7D24C6F1E936723 /* EntryListView.swift in Sources */,
+				45127C00F2B24961B32A8B53 /* IdleMonitor.swift in Sources */,
+				0406442587D48A86922783F2 /* MainView.swift in Sources */,
+				A854E6D1E55B7C06B940A909 /* PasstoolApp.swift in Sources */,
+				9332BFBC868A5B810BF03399 /* PasswordGenerator.swift in Sources */,
+				52ADBCB726A5190C285DA32F /* RootView.swift in Sources */,
+				2CB0951FC779914D1E63E18E /* SettingsView.swift in Sources */,
+				8DD4164AC9879CBA1FBAD5B0 /* SetupView.swift in Sources */,
+				DE311EE77E55196B903F36CC /* UnlockView.swift in Sources */,
+				9EFFBB35BAAF4A235C1A4381 /* VaultCrypto.swift in Sources */,
+				E1B0910D44FB70852882AFC5 /* VaultManager.swift in Sources */,
+				1898F30C97DDBD7D0C9154E4 /* VaultModels.swift in Sources */,
+				BC95F49F5D1683BDE1196DD7 /* VaultStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC2D95041310552B0F3C05F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C88E68874E5E94225E8EE37 /* AppSettings.swift in Sources */,
+				80D478FC148266A608487323 /* Clipboard.swift in Sources */,
+				C142123E19120E2F52B56780 /* DirectoryPicker.swift in Sources */,
+				35F6566EAF13834412E043FD /* EmptyStateView.swift in Sources */,
+				A64FE13CE9066E0A013A4684 /* EntryDetailView.swift in Sources */,
+				76E84BFC9A0FF4FE81D39B12 /* EntryEditorView.swift in Sources */,
+				F5AC0B1BF7BE899883C14DAB /* EntryListView.swift in Sources */,
+				709E0B797C5D7683EC400366 /* IdleMonitor.swift in Sources */,
+				BBA793BBF150AD23CB784321 /* MainView.swift in Sources */,
+				57130874BB147F45F14CCD1C /* PasstoolApp.swift in Sources */,
+				F2228E76FF22BDFF4F237059 /* PasswordGenerator.swift in Sources */,
+				666B801EE94034B35E65F819 /* RootView.swift in Sources */,
+				A5FE20042ED938491E77D0D4 /* SettingsView.swift in Sources */,
+				B900C436F6D244F2F2ED9362 /* SetupView.swift in Sources */,
+				62DACD024ACFA56DECF9C336 /* UnlockView.swift in Sources */,
+				FBD0078FB4101BC9C957F82B /* VaultCrypto.swift in Sources */,
+				DA964116EB680EADD99F253B /* VaultManager.swift in Sources */,
+				F4658177B410A61E7A31FF5E /* VaultModels.swift in Sources */,
+				05A0FA121AFBC108A3900225 /* VaultStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		16350E91260DCBA0412341B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iOS/Passtool.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.passtool.ios;
+				PRODUCT_NAME = Passtool;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		37747E254A3402530C355398 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5;
+			};
+			name = Release;
+		};
+		83D2EFE009B5F46D58E97253 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iOS/Passtool.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.passtool.ios;
+				PRODUCT_NAME = Passtool;
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A9F9939AE2CDFEC9AA632006 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = macOS/Passtool.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.passtool.mac;
+				PRODUCT_NAME = Passtool;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		ACFC161546D9F3CBB6B880DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5;
+			};
+			name = Debug;
+		};
+		EE9E039BBC989BF19A60516C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = macOS/Passtool.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.passtool.mac;
+				PRODUCT_NAME = Passtool;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		60E4E860F744DAE18BAB67DB /* Build configuration list for PBXNativeTarget "PasstoolMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9F9939AE2CDFEC9AA632006 /* Debug */,
+				EE9E039BBC989BF19A60516C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		644E975F4184DCA321FAA5E3 /* Build configuration list for PBXProject "Passtool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACFC161546D9F3CBB6B880DF /* Debug */,
+				37747E254A3402530C355398 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CDA24200FF6C3AC07105BA8F /* Build configuration list for PBXNativeTarget "PasstoolIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				16350E91260DCBA0412341B9 /* Debug */,
+				83D2EFE009B5F46D58E97253 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5E85E766385172B44BADC2EA /* Project object */;
+}
