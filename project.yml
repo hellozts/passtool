@@ -24,6 +24,8 @@ targets:
     deploymentTarget: "13.0"
     sources:
       - path: Shared
+        excludes:
+          - "Assets/**"
       - path: macOS
     settings:
       base:
