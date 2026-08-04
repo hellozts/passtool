@@ -36,6 +36,7 @@ jobs:
 
       - name: 构建（通用二进制 x86_64 + arm64）
         run: |
+          set -e
           xcodebuild \
             -project Passtool.xcodeproj \
             -scheme PasstoolMac \
@@ -48,36 +49,19 @@ jobs:
             CODE_SIGN_IDENTITY="" \
             ENABLE_HARDENED_RUNTIME=NO \
             ARCHS="x86_64 arm64" \
-            ONLY_ACTIVE_ARCH=NO \
-            | xcpretty
+            ONLY_ACTIVE_ARCH=NO
 
-      - name: 从 archive 导出未签名 .app
+      - name: 从 archive 提取 .app
         run: |
+          set -e
           mkdir -p export
-          cat > export/ExportOptions.plist <<'PLIST'
-          <?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-          <plist version="1.0">
-          <dict>
-            <key>method</key><string>developer-id</string>
-            <key>signingStyle</key><string>manual</string>
-            <key>teamID</key><string></string>
-          </dict>
-          </plist>
-          PLIST
-          xcodebuild -exportArchive \
-            -archivePath build/Passtool.xcarchive \
-            -exportPath export \
-            -exportOptionsPlist export/ExportOptions.plist || true
-
-      - name: 兜底：直接从 archive 取 .app
-        run: |
-          if [ ! -d "export/Passtool.app" ]; then
-            echo "exportArchive 失败（无签名证书），改用 archive 内的 .app"
-            APP=$(find build/Passtool.xcarchive/Products/Applications -name "*.app" | head -1)
-            mkdir -p export
-            cp -R "$APP" export/Passtool.app
+          APP=$(find build/Passtool.xcarchive/Products/Applications -name "*.app" | head -1)
+          if [ -z "$APP" ]; then
+            echo "❌ archive 中未找到 .app"
+            exit 1
           fi
+          cp -R "$APP" export/Passtool.app
+          echo "✅ 已提取: $APP"
 
       - name: 验证产物架构
         run: |
