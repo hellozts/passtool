@@ -121,6 +121,8 @@ final class VaultManager: ObservableObject {
 
     func delete(entry: VaultEntry) {
         data.entries.removeAll { $0.id == entry.id }
+        // 清理该条目的图片和附件文件（明文存储，不加密）
+        AttachmentStore.deleteAll(for: entry.id)
         save()
     }
 

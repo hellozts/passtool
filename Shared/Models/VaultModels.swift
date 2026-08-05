@@ -25,6 +25,10 @@ struct VaultEntry: Codable, Identifiable, Hashable {
     var categoryID: UUID?
     var createdAt: Date
     var updatedAt: Date
+    /// 关联图片文件名列表（明文存储于附件目录，不参与加密）
+    var imageFileNames: [String]
+    /// 关联附件列表（明文存储于附件目录，不参与加密）
+    var attachments: [VaultAttachment]
 
     init(id: UUID = UUID(),
          title: String = "",
@@ -34,7 +38,9 @@ struct VaultEntry: Codable, Identifiable, Hashable {
          notes: String = "",
          categoryID: UUID? = nil,
          createdAt: Date = Date(),
-         updatedAt: Date = Date()) {
+         updatedAt: Date = Date(),
+         imageFileNames: [String] = [],
+         attachments: [VaultAttachment] = []) {
         self.id = id
         self.title = title
         self.username = username
@@ -44,6 +50,42 @@ struct VaultEntry: Codable, Identifiable, Hashable {
         self.categoryID = categoryID
         self.createdAt = createdAt
         self.updatedAt = updatedAt
+        self.imageFileNames = imageFileNames
+        self.attachments = attachments
+    }
+
+    /// 兼容旧版本数据：解码时若缺少新字段则填默认值
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        id = try c.decode(UUID.self, forKey: .id)
+        title = try c.decode(String.self, forKey: .title)
+        username = try c.decode(String.self, forKey: .username)
+        password = try c.decode(String.self, forKey: .password)
+        url = try c.decode(String.self, forKey: .url)
+        notes = try c.decode(String.self, forKey: .notes)
+        categoryID = try c.decodeIfPresent(UUID.self, forKey: .categoryID)
+        createdAt = try c.decode(Date.self, forKey: .createdAt)
+        updatedAt = try c.decode(Date.self, forKey: .updatedAt)
+        imageFileNames = try c.decodeIfPresent([String].self, forKey: .imageFileNames) ?? []
+        attachments = try c.decodeIfPresent([VaultAttachment].self, forKey: .attachments) ?? []
+    }
+}
+
+/// 附件元信息（文件本身明文存储，不加密）
+struct VaultAttachment: Codable, Identifiable, Hashable {
+    var id: UUID
+    /// 磁盘文件名（UUID + 扩展名）
+    var fileName: String
+    /// 原始文件名（展示用）
+    var originalName: String
+    /// 文件大小（字节）
+    var size: Int64
+
+    init(id: UUID = UUID(), fileName: String, originalName: String, size: Int64) {
+        self.id = id
+        self.fileName = fileName
+        self.originalName = originalName
+        self.size = size
     }
 }
 

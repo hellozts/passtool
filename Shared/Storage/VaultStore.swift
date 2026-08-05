@@ -152,4 +152,37 @@ enum VaultStore {
             try? FileManager.default.removeItem(at: url)
         }
     }
+
+    // MARK: - 附件目录（明文，不加密）
+
+    /// 附件根目录名（位于密码库文件同级）
+    static let attachmentsFolderName = "PasstoolAttachments"
+
+    /// 返回附件根目录 URL（密码库文件同级目录下的 PasstoolAttachments/）。
+    /// 注意：调用方需自行处理 security-scoped 访问（使用 withAttachmentAccess）。
+    static func attachmentsDirectoryURL() -> URL {
+        resolvedVaultURL().deletingLastPathComponent()
+            .appendingPathComponent(attachmentsFolderName, isDirectory: true)
+    }
+
+    /// 返回某个条目的附件目录 URL。
+    static func attachmentsDirectory(for entryID: UUID) -> URL {
+        attachmentsDirectoryURL().appendingPathComponent(entryID.uuidString, isDirectory: true)
+    }
+
+    /// 在附件作用域内执行操作（基于密码库书签的安全作用域）。
+    /// 附件目录与密码库文件在同一目录，复用其书签权限。
+    static func withAttachmentAccess<T>(_ block: (URL) throws -> T) -> T? {
+        let dir = attachmentsDirectoryURL()
+        // 借用密码库文件所在目录的 security scope
+        let vaultURL = resolvedVaultURL()
+        let scoped = beginAccess(url: vaultURL)
+        defer { if scoped { endAccess(url: vaultURL) } }
+        do {
+            return try block(dir)
+        } catch {
+            NSLog("[VaultStore] attachment access error at \(dir.path): \(error)")
+            return nil
+        }
+    }
 }

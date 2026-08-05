@@ -15,7 +15,13 @@ struct EntryEditorView: View {
     @State private var categoryID: UUID?
     @State private var showPassword = false
     @State private var showGenerator = false
+    @State private var imageFileNames: [String] = []
+    @State private var attachments: [VaultAttachment] = []
+    @State private var pickImage = false
+    @State private var pickAttachment = false
+    @State private var workingEntryID: UUID = UUID()
 
+    private var entryID: UUID { entry?.id ?? workingEntryID }
     private var isEditing: Bool { entry != nil }
 
     var body: some View {
@@ -76,6 +82,50 @@ struct EntryEditorView: View {
                     TextField("备注", text: $notes, axis: .vertical)
                         .lineLimit(3...8)
                 }
+
+                Section("图片（不加密）") {
+                    if !imageFileNames.isEmpty {
+                        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 3), spacing: 8) {
+                            ForEach(imageFileNames, id: \.self) { name in
+                                imageThumbnail(name: name)
+                            }
+                        }
+                    }
+                    Button {
+                        pickImage = true
+                    } label: {
+                        Label("添加图片", systemImage: "photo.on.rectangle")
+                    }
+                }
+
+                Section("附件（不加密）") {
+                    if !attachments.isEmpty {
+                        ForEach(attachments) { att in
+                            HStack {
+                                Image(systemName: attachmentIcon(for: att.originalName))
+                                    .foregroundStyle(.secondary)
+                                VStack(alignment: .leading) {
+                                    Text(att.originalName).lineLimit(1).truncationMode(.middle)
+                                    Text(AttachmentStore.formatBytes(att.size))
+                                        .font(.caption2).foregroundStyle(.secondary)
+                                }
+                                Spacer()
+                                Button(role: .destructive) {
+                                    attachments.removeAll { $0.id == att.id }
+                                    AttachmentStore.deleteAttachmentFile(entryID: entryID, fileName: att.fileName)
+                                } label: {
+                                    Image(systemName: "trash")
+                                }
+                                .buttonStyle(.borderless)
+                            }
+                        }
+                    }
+                    Button {
+                        pickAttachment = true
+                    } label: {
+                        Label("添加附件", systemImage: "paperclip")
+                    }
+                }
             }
             .formStyle(.grouped)
 
@@ -98,6 +148,27 @@ struct EntryEditorView: View {
         .sheet(isPresented: $showGenerator) {
             PasswordGeneratorSheet(password: $password)
         }
+        #if os(macOS)
+        .background(
+            Group {
+                if pickImage {
+                    ImagePicker(entryID: entryID) { name in
+                        imageFileNames.append(name)
+                        pickImage = false
+                    }
+                    .frame(width: 0, height: 0)
+                }
+                if pickAttachment {
+                    AttachmentPicker(entryID: entryID) { att in
+                        attachments.append(att)
+                        pickAttachment = false
+                    }
+                    .frame(width: 0, height: 0)
+                }
+            }
+            .opacity(0)
+        )
+        #endif
     }
 
     private func load() {
@@ -108,18 +179,70 @@ struct EntryEditorView: View {
         url = e.url
         notes = e.notes
         categoryID = e.categoryID
+        imageFileNames = e.imageFileNames
+        attachments = e.attachments
     }
 
     private func save() {
-        var e = entry ?? VaultEntry()
+        var e = entry ?? VaultEntry(id: workingEntryID)
+        // 新建条目时：workingEntryID 已用于存放附件，直接复用该 ID
         e.title = title.trimmingCharacters(in: .whitespaces)
         e.username = username
         e.password = password
         e.url = url
         e.notes = notes
         e.categoryID = categoryID
+        e.imageFileNames = imageFileNames
+        e.attachments = attachments
         vault.upsert(entry: e)
         dismiss()
+    }
+
+    // MARK: - 图片缩略图
+
+    @ViewBuilder
+    private func imageThumbnail(name: String) -> some View {
+        Group {
+            if let data = AttachmentStore.loadImage(entryID: entryID, fileName: name),
+               let nsImage = NSImage(data: data) {
+                Image(nsImage: nsImage)
+                    .resizable()
+                    .scaledToFill()
+            } else {
+                Rectangle().fill(.secondary.opacity(0.1))
+                    .overlay(Image(systemName: "photo").foregroundStyle(.secondary))
+            }
+        }
+        .frame(height: 80)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .overlay(alignment: .topTrailing) {
+            Button {
+                imageFileNames.removeAll { $0 == name }
+                AttachmentStore.deleteImage(entryID: entryID, fileName: name)
+            } label: {
+                Image(systemName: "xmark.circle.fill")
+                    .foregroundStyle(.white, .black.opacity(0.5))
+                    .font(.system(size: 16))
+            }
+            .buttonStyle(.borderless)
+            .padding(4)
+        }
+    }
+
+    private func attachmentIcon(for name: String) -> String {
+        let ext = (name as NSString).pathExtension.lowercased()
+        switch ext {
+        case "pdf": return "doc.richtext"
+        case "txt", "md", "rtf": return "doc.text"
+        case "zip", "rar", "7z", "gz": return "doc.zipper"
+        case "mp3", "wav", "m4a", "aac", "flac": return "waveform"
+        case "mp4", "mov", "avi", "mkv": return "film"
+        case "jpg", "jpeg", "png", "gif", "heic", "tiff", "bmp": return "photo"
+        case "doc", "docx": return "doc.fill"
+        case "xls", "xlsx", "csv": return "chart.bar.doc.horizontal"
+        case "ppt", "pptx": return "doc.text.image"
+        default: return "doc"
+        }
     }
 }
 
