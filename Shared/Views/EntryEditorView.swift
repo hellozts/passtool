@@ -27,118 +27,14 @@ struct EntryEditorView: View {
     var body: some View {
         VStack(spacing: 0) {
             Form {
-                Section("基本信息") {
-                    TextField("标题", text: $title)
-                    TextField("用户名 / 邮箱", text: $username)
-                        #if os(iOS)
-                        .textInputAutocapitalization(.never)
-                        #endif
-
-                    VStack(alignment: .leading) {
-                        HStack {
-                            if showPassword {
-                                TextField("密码", text: $password)
-                                    #if os(iOS)
-                                    .textInputAutocapitalization(.never)
-                                    #endif
-                            } else {
-                                SecureField("密码", text: $password)
-                            }
-                            Button {
-                                showPassword.toggle()
-                            } label: {
-                                Image(systemName: showPassword ? "eye.slash" : "eye")
-                                    .foregroundStyle(.secondary)
-                            }
-                            .buttonStyle(.borderless)
-                            Button {
-                                showGenerator = true
-                            } label: {
-                                Image(systemName: "wand.and.stars")
-                                    .foregroundStyle(.tint)
-                            }
-                            .buttonStyle(.borderless)
-                        }
-                        if !password.isEmpty {
-                            StrengthBar(score: PasswordGenerator.strength(password))
-                        }
-                    }
-
-                    Picker("分类", selection: $categoryID) {
-                        Text("未分类").tag(UUID?.none)
-                        ForEach(vault.data.categories) { c in
-                            Label(c.name, systemImage: c.icon).tag(Optional(c.id))
-                        }
-                    }
-                }
-
-                Section("其他") {
-                    TextField("网址", text: $url)
-                        #if os(iOS)
-                        .keyboardType(.URL)
-                        .textContentType(.URL)
-                        .textInputAutocapitalization(.never)
-                        #endif
-                    TextField("备注", text: $notes, axis: .vertical)
-                        .lineLimit(3...8)
-                }
-
-                Section("图片（不加密）") {
-                    if !imageFileNames.isEmpty {
-                        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 3), spacing: 8) {
-                            ForEach(imageFileNames, id: \.self) { name in
-                                imageThumbnail(name: name)
-                            }
-                        }
-                    }
-                    Button {
-                        pickImage = true
-                    } label: {
-                        Label("添加图片", systemImage: "photo.on.rectangle")
-                    }
-                }
-
-                Section("附件（不加密）") {
-                    if !attachments.isEmpty {
-                        ForEach(attachments) { att in
-                            HStack {
-                                Image(systemName: attachmentIcon(for: att.originalName))
-                                    .foregroundStyle(.secondary)
-                                VStack(alignment: .leading) {
-                                    Text(att.originalName).lineLimit(1).truncationMode(.middle)
-                                    Text(AttachmentStore.formatBytes(att.size))
-                                        .font(.caption2).foregroundStyle(.secondary)
-                                }
-                                Spacer()
-                                Button(role: .destructive) {
-                                    attachments.removeAll { $0.id == att.id }
-                                    AttachmentStore.deleteAttachmentFile(entryID: entryID, fileName: att.fileName)
-                                } label: {
-                                    Image(systemName: "trash")
-                                }
-                                .buttonStyle(.borderless)
-                            }
-                        }
-                    }
-                    Button {
-                        pickAttachment = true
-                    } label: {
-                        Label("添加附件", systemImage: "paperclip")
-                    }
-                }
+                basicSection
+                otherSection
+                imagesSection
+                attachmentsSection
             }
             .formStyle(.grouped)
 
-            HStack {
-                Button("取消", role: .cancel) { dismiss() }
-                Spacer()
-                Button(isEditing ? "保存" : "添加") {
-                    save()
-                }
-                .buttonStyle(.borderedProminent)
-                .disabled(title.trimmingCharacters(in: .whitespaces).isEmpty)
-            }
-            .padding()
+            actionButtons
         }
         .navigationTitle(isEditing ? "编辑条目" : "新建条目")
         #if os(macOS)
@@ -169,6 +65,139 @@ struct EntryEditorView: View {
             .opacity(0)
         )
         #endif
+    }
+
+    // MARK: - 表单分区（拆分以避免类型检查超时）
+
+    @ViewBuilder
+    private var basicSection: some View {
+        Section("基本信息") {
+            TextField("标题", text: $title)
+            TextField("用户名 / 邮箱", text: $username)
+                #if os(iOS)
+                .textInputAutocapitalization(.never)
+                #endif
+
+            VStack(alignment: .leading) {
+                HStack {
+                    if showPassword {
+                        TextField("密码", text: $password)
+                            #if os(iOS)
+                            .textInputAutocapitalization(.never)
+                            #endif
+                    } else {
+                        SecureField("密码", text: $password)
+                    }
+                    Button {
+                        showPassword.toggle()
+                    } label: {
+                        Image(systemName: showPassword ? "eye.slash" : "eye")
+                            .foregroundStyle(.secondary)
+                    }
+                    .buttonStyle(.borderless)
+                    Button {
+                        showGenerator = true
+                    } label: {
+                        Image(systemName: "wand.and.stars")
+                            .foregroundStyle(.tint)
+                    }
+                    .buttonStyle(.borderless)
+                }
+                if !password.isEmpty {
+                    StrengthBar(score: PasswordGenerator.strength(password))
+                }
+            }
+
+            Picker("分类", selection: $categoryID) {
+                Text("未分类").tag(UUID?.none)
+                ForEach(vault.data.categories) { c in
+                    Label(c.name, systemImage: c.icon).tag(Optional(c.id))
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var otherSection: some View {
+        Section("其他") {
+            TextField("网址", text: $url)
+                #if os(iOS)
+                .keyboardType(.URL)
+                .textContentType(.URL)
+                .textInputAutocapitalization(.never)
+                #endif
+            TextField("备注", text: $notes, axis: .vertical)
+                .lineLimit(3...8)
+        }
+    }
+
+    @ViewBuilder
+    private var imagesSection: some View {
+        Section("图片（不加密）") {
+            if !imageFileNames.isEmpty {
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 3), spacing: 8) {
+                    ForEach(imageFileNames, id: \.self) { name in
+                        imageThumbnail(name: name)
+                    }
+                }
+            }
+            Button {
+                pickImage = true
+            } label: {
+                Label("添加图片", systemImage: "photo.on.rectangle")
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var attachmentsSection: some View {
+        Section("附件（不加密）") {
+            if !attachments.isEmpty {
+                ForEach(attachments) { att in
+                    attachmentRow(att)
+                }
+            }
+            Button {
+                pickAttachment = true
+            } label: {
+                Label("添加附件", systemImage: "paperclip")
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func attachmentRow(_ att: VaultAttachment) -> some View {
+        HStack {
+            Image(systemName: attachmentIcon(for: att.originalName))
+                .foregroundStyle(.secondary)
+            VStack(alignment: .leading) {
+                Text(att.originalName).lineLimit(1).truncationMode(.middle)
+                Text(AttachmentStore.formatBytes(att.size))
+                    .font(.caption2).foregroundStyle(.secondary)
+            }
+            Spacer()
+            Button(role: .destructive) {
+                attachments.removeAll { $0.id == att.id }
+                AttachmentStore.deleteAttachmentFile(entryID: entryID, fileName: att.fileName)
+            } label: {
+                Image(systemName: "trash")
+            }
+            .buttonStyle(.borderless)
+        }
+    }
+
+    @ViewBuilder
+    private var actionButtons: some View {
+        HStack {
+            Button("取消", role: .cancel) { dismiss() }
+            Spacer()
+            Button(isEditing ? "保存" : "添加") {
+                save()
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(title.trimmingCharacters(in: .whitespaces).isEmpty)
+        }
+        .padding()
     }
 
     private func load() {
